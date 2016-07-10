@@ -4,4 +4,25 @@
     <color name="colorPrimaryDark">#303F9F</color>
     <color name="colorAccent">#FF4081</color>
     <color name="lightGreen">#b9f4bc</color>
+
+    <color name="green">#4dff40</color>
+
+    <color name="gray_main">#4e4e4d</color>
+
+    <color name="gray_blue">#97B4C4</color>
+    <color name="white_blue">#E6F0F7</color>
+    <color name="blacktext">#000000</color>
+    <color name="black_trans">#20000000</color>
+    <color name="white">#fcfcfc</color>
+    <color name="red">#DD2C00</color>
+    <color name="blacktext2">#0f0d00</color>
+    <color name="gray">#bbb</color>
+    <color name="input_blue">#0288D1</color>
+    <color name="input_base_blue">#347ed0</color>
+    <color name="input_base_gray">#3E3E3D</color>
+    <color name="input_gray">#cccccc</color>
+    <color name="holo_light">#fff3f3f3</color>
+    <color name="card_black">#263238</color>
+    <color name="ColorPrimary1">#1BA9E1</color>
+    <color name="ColorPrimaryDark1">#106587</color>
 </resources>

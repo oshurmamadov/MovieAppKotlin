@@ -18,11 +18,10 @@
         <!--app:layout_constraintRight_toRightOf="@+id/content_main"-->
         <!--app:layout_constraintTop_toTopOf="@+id/content_main" />-->
 
-    <android.support.v7.widget.RecyclerView
-        android:id="@+id/movieList"
+    <FrameLayout
+        android:id="@+id/container"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:background="@color/lightGreen">
-    </android.support.v7.widget.RecyclerView>
+        android:layout_height="match_parent">
+    </FrameLayout>
 
 </android.support.constraint.ConstraintLayout>
