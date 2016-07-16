@@ -13,6 +13,8 @@ import android.view.ViewGroup
 import android.widget.LinearLayout
 
 import app.kotlin.com.movieappkotlin.R
+import app.kotlin.com.movieappkotlin.adapters.MoviesAdapter
+import app.kotlin.com.movieappkotlin.models.Movie
 import app.kotlin.com.movieappkotlin.networking.NetworkManager
 import app.kotlin.com.movieappkotlin.networking.RestAPI
 import app.kotlin.com.movieappkotlin.utils.API_KEY
@@ -48,6 +50,10 @@ class MainFragment : Fragment() {
                 {
                     receivedData ->
                     Log.e("Dargilik",receivedData.toString())
+                    val movies = receivedData.results.map {
+                        Movie(it.vote_average,it.title)
+                    }
+                    movieList.adapter = MoviesAdapter(movies)
                 },
                 {
                     onError ->

@@ -10,18 +10,19 @@ data class PopularMovie( val results: List<Movie>,
                          val total_results: Int
                         )
 
-data class Movie( val vote_average:      Double,
-                  val backdrop_path:     String,
-                  val adult:             Boolean,
-                  val id:                Int,
-                  val title:             String,
-                  val original_language: String,
-                  val overview:          String,
-                  val genre_ids:         IntArray,
-                  val original_title:    String,
-                  val release_date:      String,
-                  val vote_count:        Int,
-                  val poster_path:       String,
-                  val video:             Boolean,
-                  val popularity:        String
+data class Movie(
+                  val vote_average:      Double,
+                  //val backdrop_path:     String,
+                  //val adult:             Boolean,
+                  //val id:                Int,
+                  val title:             String
+                  //val original_language: String,
+                  //val overview:          String,
+                  //val genre_ids:         IntArray,
+                  //val original_title:    String,
+                  //val release_date:      String,
+                  //val vote_count:        Int,
+                  //val poster_path:       String,
+                  //val video:             Boolean,
+                  //val popularity:        String
                 )
