@@ -49,9 +49,7 @@ class MainFragment : Fragment() {
         .subscribe(
                 {
                     receivedData ->
-                    val movies = receivedData.results.map {
-                        Movie(it.vote_average,it.title)
-                    }
+                    val movies = receivedData.results
                     movieList.adapter = MoviesAdapter(movies)
                 },
                 {

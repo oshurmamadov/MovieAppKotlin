@@ -4,6 +4,10 @@ import android.util.Log
 import app.kotlin.com.movieappkotlin.models.Movie
 import app.kotlin.com.movieappkotlin.models.PopularMovie
 import app.kotlin.com.movieappkotlin.utils.API_KEY
+import app.kotlin.com.movieappkotlin.utils.ERROR_TAG
+import retrofit2.Call
+import retrofit2.Callback
+import retrofit2.Response
 import rx.Observable
 
 /**
@@ -14,23 +18,35 @@ class NetworkManager(){
         return Observable.create { subscriber ->
 
             val restAPI = RestAPI()
-            val callResponse = restAPI.getMovieApiService().getPopularMovies(API_KEY)
+            val call = restAPI.getMovieApiService().getPopularMovies(API_KEY)
 
-            val result = callResponse.execute()
+            /*
+            * Synchronous call
+            */
+//            val result = callResponse.execute()
+//            if(result.isSuccessful){
+//                subscriber.onNext(result.body())
+//                subscriber.onCompleted()
+//            }else{
+//                Log.e(ERROR_TAG,result.message())
+//            }
 
-            if(result.isSuccessful){
-//                val movies = result.body().results.map {
-//                    Movie(it.vote_average,it.title)
-//                }
+           /*
+           * Asynchronous call
+           */
+            call.enqueue(object: Callback<PopularMovie>{
+                override fun onResponse(call: Call<PopularMovie>?, response: Response<PopularMovie>) {
+                    subscriber.onNext(response.body())
+                    subscriber.onCompleted()
+                }
 
-                subscriber.onNext(result.body())
-                subscriber.onCompleted()
+                override fun onFailure(call: Call<PopularMovie>?, t: Throwable?) {
+                    Log.e(ERROR_TAG,t.toString())
+                }
+
+            })
 
 
-               // Log.e("Drakon",result.body().results.toString())
-            }else{
-                Log.e("Drakon",result.message())
-            }
         }
 
     }

@@ -16,3 +16,4 @@ val NETWORK_OFF = "off"
 val MIN_TOOLBAR_DELAY = 10
 val PORTRAIT_MODE = "portrait"
 val LANDSCAPE_MODE = "landscape"
+var ERROR_TAG = "App Error"

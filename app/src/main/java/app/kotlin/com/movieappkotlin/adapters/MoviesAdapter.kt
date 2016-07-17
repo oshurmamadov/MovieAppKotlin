@@ -11,6 +11,7 @@ import android.widget.RatingBar
 import android.widget.TextView
 import app.kotlin.com.movieappkotlin.models.Movie
 import app.kotlin.com.movieappkotlin.utils.MAX_RATING
+import app.kotlin.com.movieappkotlin.utils.loadImageByPicasso
 import app.kotlin.com.movieappkotlin.utils.myCustomViewInflater
 import de.hdodenhof.circleimageview.CircleImageView
 import kotlinx.android.synthetic.main.custom_movie_list_item.view.*
@@ -34,15 +35,8 @@ class MoviesAdapter: RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>{
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-//        var item = items[position]
         holder.bindViewHolder(items[position])
-
-        // holder.name.text = item.title
-//        holder.vote.text = item.vote_average.toString()
-//        holder.rating.rating = (item.vote_average * 10 * MAX_RATING / 100).toFloat()
-
     }
-
 
     override fun getItemCount(): Int {
         return this.items.size
@@ -72,9 +66,8 @@ class MoviesAdapter: RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>{
             name.text = item.title
             vote.text = item.vote_average.toString()
             rating.rating = (item.vote_average * 10 * MAX_RATING / 100).toFloat()
+           // logo.loadImageByPicasso()
         }
-
-
     }
 
 }
