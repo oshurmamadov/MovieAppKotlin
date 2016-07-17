@@ -1,7 +1,14 @@
 <resources>
-    <string name="app_name">MovieAppKotlin</string>
-    <string name="action_settings">Settings</string>
+    <string name="app_name">MovieApp Kotlin</string>
+    <string name="splash_app_name">MOVIE APP KOTLIN </string>
+    <string name="title_activity_genre">GenreActivity</string>
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="search_hint">Search</string>
+
+    <string name="fail">Fail</string>
+    <string name="connection_error">Connection error</string>
+
+    <string name="appbar_scrolling_view_behavior">android.support.design.widget.AppBarLayout$ScrollingViewBehavior</string>
 </resources>

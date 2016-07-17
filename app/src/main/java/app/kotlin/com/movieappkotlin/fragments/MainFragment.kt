@@ -18,6 +18,7 @@ import app.kotlin.com.movieappkotlin.models.Movie
 import app.kotlin.com.movieappkotlin.networking.NetworkManager
 import app.kotlin.com.movieappkotlin.networking.RestAPI
 import app.kotlin.com.movieappkotlin.utils.API_KEY
+import app.kotlin.com.movieappkotlin.utils.ERROR_TAG
 import kotlinx.android.synthetic.main.fragment_main.*
 import rx.Scheduler
 import rx.android.schedulers.AndroidSchedulers
@@ -40,7 +41,7 @@ class MainFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        movieList.setHasFixedSize(true);
+        movieList.setHasFixedSize(true)
         movieList.layoutManager = LinearLayoutManager(context)
 
         val subscriber = networkManager.getPopularMovies()
@@ -54,7 +55,7 @@ class MainFragment : Fragment() {
                 },
                 {
                     onError ->
-                    Log.e("App Error",onError.message)
+                    Log.e(ERROR_TAG,onError.message)
                 }
         )
         subscription.add(subscriber)

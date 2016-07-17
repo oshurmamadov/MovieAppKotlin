@@ -6,10 +6,14 @@ import android.support.design.widget.Snackbar
 import android.support.v4.app.Fragment
 import android.support.v7.app.AppCompatActivity
 import android.support.v7.widget.Toolbar
+import android.util.Log
 import android.view.View
 import android.view.Menu
 import android.view.MenuItem
 import app.kotlin.com.movieappkotlin.fragments.MainFragment
+import app.kotlin.com.movieappkotlin.models.Configuration
+import app.kotlin.com.movieappkotlin.utils.CONFIG
+import app.kotlin.com.movieappkotlin.utils.ERROR_TAG
 
 class MainActivity : AppCompatActivity() {
 
@@ -18,6 +22,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
         val toolbar = findViewById(R.id.toolbar) as Toolbar?
         setSupportActionBar(toolbar)
+
+
+        Log.e(ERROR_TAG,"-->"+(this.intent.getSerializableExtra(CONFIG) as Configuration).images.base_url)
 
         goToFragment(MainFragment())
 

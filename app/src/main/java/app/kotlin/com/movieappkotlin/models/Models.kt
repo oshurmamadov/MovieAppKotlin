@@ -1,5 +1,7 @@
 package app.kotlin.com.movieappkotlin.models
 
+import java.io.Serializable
+
 /**
  * Created by parviz on 7/10/16.
  */
@@ -28,7 +30,7 @@ data class Movie(
                 )
 
 data class Configuration( val images: Images,
-                          val change_keys: List<String>)
+                     val change_keys: List<String>): Serializable
 
 data class Images( val base_url: String,
                    val secure_base_url: String,
@@ -37,4 +39,4 @@ data class Images( val base_url: String,
                    val poster_sizes:List<String>,
                    val profile_sizes:List<String>,
                    val still_sizes:List<String>
-                 )
+                 ): Serializable
