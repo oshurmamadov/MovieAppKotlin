@@ -11,7 +11,9 @@ import android.widget.RatingBar
 import android.widget.TextView
 import app.kotlin.com.movieappkotlin.models.Movie
 import app.kotlin.com.movieappkotlin.utils.MAX_RATING
+import app.kotlin.com.movieappkotlin.utils.myCustomViewInflater
 import de.hdodenhof.circleimageview.CircleImageView
+import kotlinx.android.synthetic.main.custom_movie_list_item.view.*
 import java.util.*
 
 /**
@@ -26,44 +28,53 @@ class MoviesAdapter: RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>{
         this.items = items
     }
 
-
-    override fun onBindViewHolder(holder: MovieViewHolder?, position: Int) {
-        var item = items[position]
-
-        holder!!.name.text = item.title
-        holder!!.vote.text = item.vote_average.toString()
-        holder!!.rating.rating = (item.vote_average * 10 * MAX_RATING / 100).toFloat()
-
-    }
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.custom_movie_list_item , parent, false)
+        val view = parent.myCustomViewInflater(R.layout.custom_movie_list_item)
         return MovieViewHolder(view)
     }
+
+    override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
+//        var item = items[position]
+        holder.bindViewHolder(items[position])
+
+        // holder.name.text = item.title
+//        holder.vote.text = item.vote_average.toString()
+//        holder.rating.rating = (item.vote_average * 10 * MAX_RATING / 100).toFloat()
+
+    }
+
 
     override fun getItemCount(): Int {
         return this.items.size
     }
 
 
-    class MovieViewHolder: RecyclerView.ViewHolder{
-        var image: ImageView
-        var cImage: CircleImageView
-        var name: TextView
-        var vote: TextView
-        var rating: RatingBar
-        var card: CardView
-        var cardHolder: View
+    class MovieViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
+//        var image: ImageView
+//        var cImage: CircleImageView
+//        var name: TextView
+//        var vote: TextView
+//        var rating: RatingBar
+//        var card: CardView
+//        var cardHolder: View
+//
+//        constructor(itemView: View): super(itemView){
+//            image = itemView.findViewById(R.id.logo) as ImageView
+//            name = itemView.findViewById(R.id.name) as TextView
+//            vote = itemView.findViewById(R.id.vote) as TextView
+//            rating = itemView.findViewById(R.id.rating) as RatingBar
+//            cImage = itemView.findViewById(R.id.cAvatar) as CircleImageView
+//            card = itemView.findViewById(R.id.recycler_card) as CardView
+//            cardHolder = itemView.findViewById(R.id.card_holder)
+//        }
 
-        constructor(itemView: View): super(itemView){
-            image = itemView.findViewById(R.id.logo) as ImageView
-            name = itemView.findViewById(R.id.name) as TextView
-            vote = itemView.findViewById(R.id.vote) as TextView
-            rating = itemView.findViewById(R.id.rating) as RatingBar
-            cImage = itemView.findViewById(R.id.cAvatar) as CircleImageView
-            card = itemView.findViewById(R.id.recycler_card) as CardView
-            cardHolder = itemView.findViewById(R.id.card_holder)
+        fun bindViewHolder(item: Movie) = with(itemView){
+            name.text = item.title
+            vote.text = item.vote_average.toString()
+            rating.rating = (item.vote_average * 10 * MAX_RATING / 100).toFloat()
         }
+
+
     }
 
 }

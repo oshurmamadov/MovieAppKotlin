@@ -49,7 +49,6 @@ class MainFragment : Fragment() {
         .subscribe(
                 {
                     receivedData ->
-                    Log.e("Dargilik",receivedData.toString())
                     val movies = receivedData.results.map {
                         Movie(it.vote_average,it.title)
                     }
@@ -57,7 +56,7 @@ class MainFragment : Fragment() {
                 },
                 {
                     onError ->
-                    Log.e("Dargilik",onError.message)
+                    Log.e("App Error",onError.message)
                 }
         )
         subscription.add(subscriber)
