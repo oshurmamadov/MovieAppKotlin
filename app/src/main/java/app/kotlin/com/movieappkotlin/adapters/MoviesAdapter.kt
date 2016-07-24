@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.RatingBar
 import android.widget.TextView
+import app.kotlin.com.movieappkotlin.models.Images
 import app.kotlin.com.movieappkotlin.models.Movie
 import app.kotlin.com.movieappkotlin.utils.MAX_RATING
 import app.kotlin.com.movieappkotlin.utils.loadImageByPicasso
@@ -24,9 +25,11 @@ import java.util.*
 class MoviesAdapter: RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>{
 
     private var items: List<Movie>
+    private var images: Images
 
-    constructor(items: List<Movie>){
+    constructor(items: List<Movie>,images: Images){
         this.items = items
+        this.images = images
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder {
@@ -35,7 +38,7 @@ class MoviesAdapter: RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>{
     }
 
     override fun onBindViewHolder(holder: MovieViewHolder, position: Int) {
-        holder.bindViewHolder(items[position])
+        holder.bindViewHolder(items[position],images)
     }
 
     override fun getItemCount(): Int {
@@ -45,11 +48,12 @@ class MoviesAdapter: RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>{
 
     class MovieViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
 
-        fun bindViewHolder(item: Movie) = with(itemView){
+        fun bindViewHolder(item: Movie,images:Images) = with(itemView){
             name.text = item.title
             vote.text = item.vote_average.toString()
             rating.rating = (item.vote_average * 10 * MAX_RATING / 100).toFloat()
-            //logo.loadImageByPicasso()
+            logo.loadImageByPicasso(images.base_url + images.backdrop_sizes[1] + item.backdrop_path)
+            cAvatar.loadImageByPicasso(images.base_url + images.backdrop_sizes[1]  + item.poster_path)
         }
     }
 

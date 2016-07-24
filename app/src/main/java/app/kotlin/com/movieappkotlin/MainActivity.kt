@@ -24,7 +24,7 @@ class MainActivity : AppCompatActivity() {
         setSupportActionBar(toolbar)
 
 
-        Log.e(ERROR_TAG,"-->"+(this.intent.getSerializableExtra(CONFIG) as Configuration).images.base_url)
+      //  Log.e(ERROR_TAG,"-->"+(this.intent.getSerializableExtra(CONFIG) as Configuration).images.base_url)
 
         goToFragment(MainFragment())
 

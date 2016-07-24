@@ -14,10 +14,13 @@ import android.widget.LinearLayout
 
 import app.kotlin.com.movieappkotlin.R
 import app.kotlin.com.movieappkotlin.adapters.MoviesAdapter
+import app.kotlin.com.movieappkotlin.models.Configuration
+import app.kotlin.com.movieappkotlin.models.Images
 import app.kotlin.com.movieappkotlin.models.Movie
 import app.kotlin.com.movieappkotlin.networking.NetworkManager
 import app.kotlin.com.movieappkotlin.networking.RestAPI
 import app.kotlin.com.movieappkotlin.utils.API_KEY
+import app.kotlin.com.movieappkotlin.utils.CONFIG
 import app.kotlin.com.movieappkotlin.utils.ERROR_TAG
 import kotlinx.android.synthetic.main.fragment_main.*
 import rx.Scheduler
@@ -41,6 +44,8 @@ class MainFragment : Fragment() {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
+        val images = (activity.intent.getSerializableExtra(CONFIG) as Configuration).images
+
         movieList.setHasFixedSize(true)
         movieList.layoutManager = LinearLayoutManager(context)
 
@@ -51,7 +56,7 @@ class MainFragment : Fragment() {
                 {
                     receivedData ->
                     val movies = receivedData.results
-                    movieList.adapter = MoviesAdapter(movies)
+                    movieList.adapter = MoviesAdapter(movies,images)
                 },
                 {
                     onError ->
