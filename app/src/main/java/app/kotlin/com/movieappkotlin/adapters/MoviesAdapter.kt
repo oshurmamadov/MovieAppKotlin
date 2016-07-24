@@ -44,29 +44,12 @@ class MoviesAdapter: RecyclerView.Adapter<MoviesAdapter.MovieViewHolder>{
 
 
     class MovieViewHolder(itemView: View): RecyclerView.ViewHolder(itemView){
-//        var image: ImageView
-//        var cImage: CircleImageView
-//        var name: TextView
-//        var vote: TextView
-//        var rating: RatingBar
-//        var card: CardView
-//        var cardHolder: View
-//
-//        constructor(itemView: View): super(itemView){
-//            image = itemView.findViewById(R.id.logo) as ImageView
-//            name = itemView.findViewById(R.id.name) as TextView
-//            vote = itemView.findViewById(R.id.vote) as TextView
-//            rating = itemView.findViewById(R.id.rating) as RatingBar
-//            cImage = itemView.findViewById(R.id.cAvatar) as CircleImageView
-//            card = itemView.findViewById(R.id.recycler_card) as CardView
-//            cardHolder = itemView.findViewById(R.id.card_holder)
-//        }
 
         fun bindViewHolder(item: Movie) = with(itemView){
             name.text = item.title
             vote.text = item.vote_average.toString()
             rating.rating = (item.vote_average * 10 * MAX_RATING / 100).toFloat()
-           // logo.loadImageByPicasso()
+            //logo.loadImageByPicasso()
         }
     }
 
